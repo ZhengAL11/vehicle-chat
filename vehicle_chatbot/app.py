@@ -20,6 +20,26 @@ def load_engines():
     data_loader = VehicleDataLoader("data/raw_data.csv")
     llm_bot = LLMEngine()
     return data_loader, llm_bot
+data_loader, llm_bot = load_engines()
+
+# === 🚑 紧急诊断代码 (调试完可删除) ===
+import os
+st.error("正在进行环境诊断...")
+# 1. 检查当前目录
+st.write(f"当前工作目录: `{os.getcwd()}`")
+# 2. 检查 data 文件夹是否存在
+if os.path.exists("data"):
+    st.write(f"📂 data 文件夹下的文件: `{os.listdir('data')}`")
+else:
+    st.write("❌ 警告：找不到 'data' 文件夹！")
+# 3. 检查数据是否加载进内存
+if data_loader.df is not None and not data_loader.df.empty:
+    st.success(f"✅ 数据加载成功！共 {len(data_loader.df)} 行。")
+    st.dataframe(data_loader.df.head(3)) # 展示前3行看看有没有乱码
+else:
+    st.error("❌ 数据加载失败！DataFrame 为空。")
+# ========================================
+
 
 data_loader, llm_bot = load_engines()
 
