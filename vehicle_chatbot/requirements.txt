@@ -1,0 +1,6 @@
+streamlit>=1.35.0      # Web UI 框架
+pandas>=2.0.0          # 数据处理
+openai>=1.0.0          # 调用 LLM API
+rapidfuzz>=3.0.0       # 字符串模糊匹配
+python-dotenv          # 本地开发环境变量管理
+watchdog               # 开发时文件变动自动刷新
